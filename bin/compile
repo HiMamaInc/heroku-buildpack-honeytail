@@ -3,7 +3,6 @@
 set -e
 
 echo "------> Installing honeytail"
-
-wget -c -q https://honeycomb.io/download/honeytail/linux/honeytail_1.591_amd64.deb -o "$2/honeytail_1.591_amd64.deb"
-echo "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  $2/honeytail_1.591_amd64.deb" | sha256sum -c
-dpkg -i "$2/honeytail_1.591_amd64.deb"
+wget -q -c -O "$2/honeytail" https://honeycomb.io/download/honeytail/linux/1.591
+echo "bab8fa43df7661912ea246affe8a273c87a163f17c57efd30d67d01ce6d22244  $2/honeytail" | sha256sum -c
+cp -n "$2/honeytail" "$1/bin/"
