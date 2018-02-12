@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+echo "------> Installing honeytail"
+
+wget -c -q https://honeycomb.io/download/honeytail/linux/honeytail_1.591_amd64.deb -o "$2/honeytail_1.591_amd64.deb"
+echo "53ddd07cb1ded69db1dc3f25e5a3e6b3a5a08f1fcf13533ba9b7b47689384ff9  $2/honeytail_1.591_amd64.deb" | sha256sum -c
+sudo dpkg -i "$2/honeytail_1.591_amd64.deb"
+
+echo "        Copying default config"
+mkdir -p "$1/config"
+cp -n "config/honeytail.conf.erb" "$1/config/honeytail.conf.erb
