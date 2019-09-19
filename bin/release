@@ -1,2 +1,8 @@
 #!/bin/sh
-echo "--- {}"
+echo "------> Booting honeytail"
+
+cat << EOF
+---
+default_process_types:
+  honeytail: $1/honeytail-1.762 -c $1/config/honeytail.conf
+EOF
